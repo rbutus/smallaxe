@@ -1,0 +1,8 @@
+setup.sh
+setup_install.sh
+start.sh
+node_modules
+.cache
+build
+dist
+api
