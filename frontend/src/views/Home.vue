@@ -6,15 +6,15 @@
 </template>
 
 <script>
-import About from '../components/About.vue';
+// import About from '../components/About.vue';
 import Logo from '../components/Logo.vue';
-import Menu from '../components/Menu.vue';
+// import Menu from '../components/Menu.vue';
 
 export default {
   components: {
-    About,
+    // About,
     Logo,
-    Menu,
+    // Menu,
   },
 };
 </script>
