@@ -1,8 +1,7 @@
 <template>
   <div>
-      <About/>
       <Logo/>
-      <Menu/>
+      COMING SOON!
   </div>
 </template>
 
