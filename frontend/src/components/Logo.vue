@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="http://localhost:1337/uploads/smallaxe_s_70f01f3a6f.png">
+    <img :src="logo">
   </div>
 </template>
 
@@ -16,10 +16,11 @@ export default {
   },
   methods: {
     getLogo() {
-      const pathLogo = 'http://localhost:1337/logo';
+      const pathRoot = 'http://localhost:1337';
+      const pathLogo = pathRoot.concat('/logo');
       axios.get(pathLogo)
         .then((res) => {
-          this.logo = res.data;
+          this.logo = pathRoot.concat(res.data.image[0].url);
         });
     },
   },
@@ -31,5 +32,10 @@ export default {
 <style scoped>
 div {
   margin: 20px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
 }
 </style>
