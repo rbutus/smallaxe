@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="quote">
-      "{{ quote.text }}"
-    </div>
-    <a href="http://localhost:1337/admin" class="staff">
-      - Staff
-    </a>
+    <li v-for="quote in quotes" v-bind:key="quote">
+      <div class="quote">
+        "{{ quote.text }}"
+      </div>
+      <a href="http://api.smallaxeroadhouse.ca/admin" class="staff">
+        - {{ quote.from }}
+      </a>
+    </li>
   </div>
 </template>
 
@@ -16,15 +18,15 @@ export default {
   name: 'post-request',
   data() {
     return {
-      quote: null,
+      quotes: null,
     };
   },
   methods: {
     getAbout() {
-      const path = 'http://localhost:1337/quote';
+      const path = 'http://api.smallaxeroadhouse.ca/quotes';
       axios.get(path)
         .then((res) => {
-          this.quote = res.data;
+          this.quotes = res.data;
         });
     },
   },

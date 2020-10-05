@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="logo">
+    <img src="@/assets/smallaxe-s.png">
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     getLogo() {
-      const pathRoot = 'http://localhost:1337';
+      const pathRoot = 'http://api.smallaxeroadhouse.ca';
       const pathLogo = pathRoot.concat('/logo');
       axios.get(pathLogo)
         .then((res) => {
@@ -37,5 +37,9 @@ div {
 img {
   width: 100px;
   height: 100px;
+}
+
+img:before {
+  opacity: 0;
 }
 </style>
