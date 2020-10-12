@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- <Navbar/> -->
     <div id="app">
+    <Navbar/>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-// import Navbar from './components/Navbar.vue';
+import Navbar from './components/Navbar.vue';
 
 export default {
   components: {
-    // Navbar,
+    Navbar,
   },
 };
 </script>
@@ -20,8 +20,15 @@ export default {
 <style>
 @import './app.css';
 
-/* .navbar {
-  position: top;
-} */
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url('./assets/img/tacocat_00dbdb_transparent.png');
+  background-size: 10pt;
+  height: 100%;
+  overflow: scroll;
+}
 
 </style>

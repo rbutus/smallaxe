@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="container">
+    <SidebarMenu/>
+    <!-- <div class="container">
       <div class="row">
         <div class="col-sm-6">
           <div id="breakfast" class="menu header">Breakfast Menu</div>
@@ -23,12 +24,14 @@
           </li>
         </div>
       </div>
-    </div>
+    </div> -->
+
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import SidebarMenu from '../components/SidebarMenu.vue';
 
 export default {
   name: 'post-request',
@@ -57,6 +60,9 @@ export default {
   created() {
     this.getMenuAM();
     this.getMenuPM();
+  },
+  components: {
+    SidebarMenu,
   },
 };
 </script>

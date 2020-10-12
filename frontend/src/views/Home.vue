@@ -1,8 +1,17 @@
 <template>
   <div>
-    <h3 style="padding-top: 10pt">COMING SOON!</h3>
-      <Logo/>
-      <Quote/>
+    <p class="phone">250.838.2385</p>
+    <div class="container">
+      <logo/>
+      <div class="row">
+        <div class="col-7">
+          <quote/>
+        </div>
+        <div class="col-5">
+          <img class="cat img-fluid" src="../assets/img/tacocat_color_trans.png"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,12 +30,20 @@ export default {
   },
 };
 </script>
-<style>
 
+<style>
 h3 {
-  color: #00dbdb;
-  background-color: black;
+  color: #fdbe57;
+  background-color:#231f20;
   padding: 10pt;
+  position: relative;
 }
 
+.cat {
+  width: 200pt;
+}
+.phone {
+  font-size: 20pt;
+  position: relative;
+}
 </style>

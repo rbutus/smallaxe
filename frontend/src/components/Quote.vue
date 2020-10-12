@@ -1,10 +1,10 @@
 <template>
   <div>
-    <li v-for="quote in quotes" v-bind:key="quote">
+    <li v-for="(quote, i) in quotes" v-bind:key="'quote_' + i">
       <div class="quote">
         "{{ quote.text }}"
       </div>
-      <a href="http://api.smallaxeroadhouse.ca/admin" class="staff">
+      <a :href="admin_path" class="staff">
         - {{ quote.from }}
       </a>
     </li>
@@ -12,41 +12,32 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   name: 'post-request',
-  data() {
-    return {
-      quotes: null,
-    };
-  },
-  methods: {
-    getAbout() {
-      const path = 'http://api.smallaxeroadhouse.ca/quotes';
-      axios.get(path)
-        .then((res) => {
-          this.quotes = res.data;
-        });
-    },
-  },
+  computed: mapState([
+    'quotes',
+  ]),
   created() {
-    this.getAbout();
+    this.$store.dispatch('loadQuotes');
   },
 };
 </script>
 
 <style>
-
 .quote {
-  color: black;
-  margin: 0 25% 0 25%;
-  width: 50%;
+  color: #231f20;
+  width: 90%;
+  font-size: 15pt;
+  padding-top: 10pt;
 }
 .staff {
-  color: grey;
+  color: rgb(70,70,70);
   margin: 0 0 0 30%;
   padding-top: 5pt;
+  font-size: 10pt;
 }
 
 .staff:hover {
