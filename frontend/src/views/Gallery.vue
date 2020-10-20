@@ -1,15 +1,19 @@
 <template>
   <div>
-    <VueGallery :images="photos" :index="index" @close="index = null"></VueGallery>
-    <div
-      class="image"
-      v-for="(image, imageIndex) in photos"
-      :key="imageIndex"
-      @click="index = imageIndex"
-      :style="{ backgroundImage: 'url(' + image + ')',
-      width: '300px', height: '200px' }"
-    ></div>
-    <h1>{{ debug(photos) }}</h1>
+    <div class="bg-black"></div>
+    <div class="gallery">
+      <VueGallery :images="photos" :index="index"
+      @close="index = null"></VueGallery>
+      <div
+        class="image" id="start-gallery"
+        v-for="(image, imageIndex) in photos"
+        :key="imageIndex"
+        @click="index = imageIndex"
+        :style="{ backgroundImage: 'url(' + image + ')',
+        width: '300px', height: '200px' }"
+      ></div>
+      <h1>{{ debug(photos) }}</h1>
+    </div>
   </div>
 </template>
 
@@ -33,15 +37,20 @@ export default {
   components: {
     VueGallery,
   },
-  created() {
+  mounted() {
     this.$store.dispatch('loadPhotos');
+    this.startGallery();
   },
   methods: {
     debug(heya) {
       console.log(heya);
     },
+    startGallery: setTimeout(() => {
+      document.getElementById('start-gallery').click();
+    }, 0),
   },
 };
+
 </script>
 
 <style scoped>
@@ -53,4 +62,19 @@ export default {
   border: 1px solid #ebebeb;
   margin: 5px;
 }
+
+.gallery {
+  position: relative;
+  z-index: 3;
+  padding-top: 80pt;
+}
+
+.bg-black {
+  background-color:rgba(0,0,0,0.9);
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  z-index:2;
+}
+
 </style>

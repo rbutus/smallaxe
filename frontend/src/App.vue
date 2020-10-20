@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div id="app">
+  <div class="app-font">
     <Navbar/>
-      <router-view/>
-    </div>
+    <div class="bg-black-home"></div>
+    <div id="app" class="bg-img"></div>
+    <div class="router"><router-view/></div>
   </div>
 </template>
 
@@ -20,15 +20,30 @@ export default {
 <style>
 @import './app.css';
 
-html, body {
-  height: 100%;
+.bg-img {
+  background-image: url('./assets/img/smallaxe_new_crop.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index:0;
 }
 
-body {
-  background-image: url('./assets/img/tacocat_00dbdb_transparent.png');
-  background-size: 10pt;
+.bg-black-home {
+  background-color: rgba(0,0,0,0.3);
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index:1;
+}
+
+.router {
+  position: relative;
+  z-index:2;
   height: 100%;
-  overflow: scroll;
 }
 
 </style>

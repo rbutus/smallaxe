@@ -1,49 +1,35 @@
 <template>
-  <div>
-    <p class="phone">250.838.2385</p>
-    <div class="container">
-      <logo/>
-      <div class="row">
-        <div class="col-7">
-          <quote/>
-        </div>
-        <div class="col-5">
-          <img class="cat img-fluid" src="../assets/img/tacocat_color_trans.png"/>
-        </div>
-      </div>
-    </div>
+  <div class="home">
+    <Logo/>
+    <Welcome/>
+    <Events/>
+    <Contact/>
   </div>
 </template>
 
 <script>
-// import About from '../components/About.vue';
 import Logo from '../components/Logo.vue';
-import Quote from '../components/Quote.vue';
-// import Menu from '../components/Menu.vue';
+import Welcome from '../components/Welcome.vue';
+import Events from '../components/Events.vue';
+import Contact from '../components/Contact.vue';
 
 export default {
   components: {
-    // About,
     Logo,
-    Quote,
-    // Menu,
+    Welcome,
+    Events,
+    Contact,
   },
 };
 </script>
 
 <style>
-h3 {
-  color: #fdbe57;
-  background-color:#231f20;
-  padding: 10pt;
+.home {
   position: relative;
+ z-index: 1;
 }
 
-.cat {
-  width: 200pt;
-}
-.phone {
-  font-size: 20pt;
-  position: relative;
+.headers {
+  font-size: 4vh;
 }
 </style>

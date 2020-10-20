@@ -8,31 +8,12 @@
   font-display: swap;
 }
 
-#app {
+.app-font {
   font-family: 'Special Elite';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-li {
-  list-style-type: none;
-  margin: 10px;
-}
-
-body {
-  margin: 0;
-  /* padding-top: 40px; */
+  color: #a8a8a8;
 }
 
 html, body {

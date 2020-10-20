@@ -1,24 +1,16 @@
 <template>
 <div class="navbarr">
-  <b-navbar toggleable="sm" type="dark" variant="dark">
+  <b-navbar toggleable="lg" type="dark" variant="dark" id="nav1">
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
+      <b-navbar-nav style="width: 100%" justified>
         <b-nav-item href="/">HOME</b-nav-item>
-    <!-- <b-nav-item href="calendar">CALENDAR</b-nav-item> -->
-        <b-nav-item-dropdown text="MENU">
-          <div class=dropsize>
-            <b-dropdown-item>Breakfast</b-dropdown-item>
-            <b-dropdown-item>Brunch</b-dropdown-item>
-            <b-dropdown-item>Main/Takeout</b-dropdown-item>
-            <b-dropdown-item>Drinks</b-dropdown-item>
-          </div>
-        </b-nav-item-dropdown>
-        <b-nav-item href="#">SPECIALS</b-nav-item>
+        <b-nav-item href="/#events-id">EVENTS</b-nav-item>
+        <b-nav-item href="menu">MENU</b-nav-item>
         <b-nav-item href="covid">COVID-19</b-nav-item>
         <b-nav-item href="gallery">GALLERY</b-nav-item>
+        <b-nav-item href="/#contact-id">CONTACT/HOURS</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -32,10 +24,15 @@
 <style>
 
 .navbarr {
-  position: sticky;
-  z-index: 1;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
   top: 0;
-  font-size: 15pt;
+  font-size: 20pt;
+}
+
+#nav1 {
+  opacity: 0.9;
 }
 
 .dropsize {
