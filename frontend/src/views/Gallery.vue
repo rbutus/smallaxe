@@ -10,7 +10,7 @@
         :key="imageIndex"
         @click="index = imageIndex"
         :style="{ backgroundImage: 'url(' + image + ')',
-        width: '300px', height: '200px' }"
+        width: '150px', height: '120px' }"
       ></div>
       <h1>{{ debug(photos) }}</h1>
     </div>
@@ -39,15 +39,15 @@ export default {
   },
   mounted() {
     this.$store.dispatch('loadPhotos');
-    this.startGallery();
+    // this.startGallery();
   },
   methods: {
     debug(heya) {
       console.log(heya);
     },
-    startGallery: setTimeout(() => {
-      document.getElementById('start-gallery').click();
-    }, 0),
+    // startGallery: setTimeout(() => {
+    //   document.getElementById('start-gallery').click();
+    // }, 0),
   },
 };
 

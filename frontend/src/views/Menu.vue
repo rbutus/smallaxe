@@ -5,8 +5,8 @@
       <div class="box" v-b-toggle.collapse-happy-hour>
         <div class="header-bg">
           <div class="header">Happy Hour!</div>
-          <div>2pm - 5pm daily!</div>
-          <div>+</div>
+          <div class="menu-times">2pm - 5pm daily!</div>
+          <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-happy-hour">
           <li v-for="(item, i) in happyHour" v-bind:key="'happyHour_' + i">
@@ -21,8 +21,8 @@
       <div class="box" v-b-toggle.collapse-weekday>
         <div class="header-bg">
           <div class="header">Weekday Breakfast Menu</div>
-          <div>8am - 12pm </div>
-          <div>+</div>
+          <div class="menu-times">8am - 12pm </div>
+          <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-weekday">
           <li v-for="(item, i) in menuWeekdayBreakfast" v-bind:key="'weekdaymenu_' + i">
@@ -37,8 +37,8 @@
       <div class="box" v-b-toggle.collapse-weekend>
         <div class="header-bg">
           <div class="header">Weekend Breakfast Menu</div>
-          <div>8am - 2pm Sat, Sun</div>
-          <div>+</div>
+          <div class="menu-times">8am - 2pm Sat, Sun</div>
+          <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-weekend">
           <li v-for="(item, i) in menuWeekendBreakfast" v-bind:key="'weekendmenu_' + i">
@@ -53,9 +53,9 @@
       <div class="box" v-b-toggle.collapse-main>
         <div class="header-bg">
           <div class="header">Main Menu</div>
-          <div>12pm - close weekdays</div>
-          <div>2pm - close weekends</div>
-          <div>+</div>
+          <div class="menu-times">12pm - close weekdays</div>
+          <div class="menu-times">2pm - close weekends</div>
+          <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-main">
           <li v-for="(item, i) in menuMain" v-bind:key="'mainmenu_' + i">
@@ -70,8 +70,8 @@
       <div class="box" v-b-toggle.collapse-drinks>
         <div class="header-bg">
           <div class="header">Drink Menu</div>
-          <div>10am - close</div>
-          <div>+</div>
+          <div class="menu-times">10am - close</div>
+          <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-drinks">
           <li v-for="(item, i) in menuDrinks" v-bind:key="'drinksmen_' + i">
@@ -125,20 +125,25 @@ export default {
 
 }
 .header {
-  font-size: 4vh;
+  font-size: 3.5vh;
   padding-top: 0.3em;
-  color:#dc3fb9
+  color:#dc3fb9;
+}
+.menu-times {
+  font-size: 2.5vh;
+}
+.plus {
+  font-size: 4vh;
 }
 .menu-info {
   max-width: 90%;
   margin: 0 auto;
 }
 .item {
-  font-size: 3.5vh;
+  font-size: 3vh;
   color: #00dbdb;
 }
 .price {
-  padding-left: 15pt;
   color: whitesmoke;
   font-size: 2vh;
 }
@@ -153,9 +158,9 @@ li {
 }
 
 .menu {
-  padding-top: 60pt;
   position: relative;
   height: 100%;
+  padding-top: 60pt;
 }
 
 .fill-black {
@@ -167,6 +172,16 @@ li {
 }
 .header-bg {
   background-color: black;
+  position: sticky;
+  top: 60pt;
 }
+@media (max-width: 990px) {
+  .header-bg{
+    top: 40pt;
+  }
+  .menu{
+    padding-top: 40pt;
+    }
+  }
 
 </style>

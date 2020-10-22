@@ -14,7 +14,9 @@
         </b-col>
       </b-row>
     </b-container>
+    <div class="about-container">
     <div class="about" v-html="about.text"></div>
+    </div>
     <div class="facts">
       <li v-for="(fact, i) in facts" v-bind:key="'fact_' + i">
         <b-badge pill>{{ fact.text }}</b-badge>
@@ -64,5 +66,14 @@ export default {
 }
 .tacocat-color {
   width: 80%;
+}
+.border-img {
+  width: calc(100vw - 10vw);
+  position: absolute;
+  left: 5vw;
+}
+.about-container {
+  position: relative;
+
 }
 </style>
