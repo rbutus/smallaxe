@@ -21,7 +21,7 @@
       <div class="box" v-b-toggle.collapse-weekday>
         <div class="header-bg">
           <div class="header">Weekday Breakfast Menu</div>
-          <div class="menu-times">8am - 12pm </div>
+          <div class="menu-times">8am - 11am </div>
           <div class="plus">+</div>
         </div>
         <b-collapse id="collapse-weekday">

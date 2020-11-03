@@ -9,30 +9,32 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.17.3",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.18.1",
     "bulma": "^0.9.1",
     "core-js": "^3.6.5",
     "dateformat": "^3.0.3",
-    "marked": "^1.2.0",
+    "marked": "^1.2.2",
     "moment": "^2.29.1",
     "vue": "^2.6.12",
     "vue-gallery": "^2.0.1",
     "vue-gallery-slideshow": "^1.5.2",
     "vue-picture-swipe": "^2.0.2",
-    "vue-router": "^3.2.0",
-    "vue-sidebar-menu": "^4.7.2",
+    "vue-router": "^3.4.7",
+    "vue-sidebar-menu": "^4.7.3",
     "vue-tinybox": "^1.3.0",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.0",
-    "@vue/cli-plugin-eslint": "^4.5.0",
-    "@vue/cli-service": "^4.5.0",
+    "@babel/traverse": "^7.12.1",
+    "@babel/types": "^7.12.1",
+    "@vue/cli-plugin-babel": "^4.5.8",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.3",
@@ -50,11 +52,15 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "template-curly-spacing": "off",
+      "indent": "off"
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "build-report": "vue-cli-service build --report"
 }

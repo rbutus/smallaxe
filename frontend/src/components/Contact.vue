@@ -2,15 +2,15 @@
   <div class="hours-contact">
     <div class="hours">
       <div class="hours-header">HOURS</div>
-      <div>Sun, Mon, Tue: 8am - 7pm</div>
-      <div>Wed: CLOSED</div>
-      <div>Thu: 8am - 9pm</div>
-      <div>Fri, Sat: 8am - 10pm</div>
+      <div v-html="hours.hours"></div>
     </div>
     <div>
-      <div class="headers contact">Contact</div>
-      <div class="phone">250.838.2385</div>
-      <div>409 Cliff Ave., Enderby, BC</div>
+      <div class="headers contact">CONTACT</div>
+      <div class="phone">
+      <a v-html="contact.phone" :href="tel + contact.phone"></a>
+      </div>
+      <div v-html="contact.address"></div>
+      <a class="email" v-html="contact.email" :href="mailTo + contact.email"></a>
     </div>
     <div id="contact-id"></div>
     <a href="https://api.smallaxeroadhouse.ca/admin">
@@ -18,6 +18,27 @@
     </a>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  data() {
+    return {
+      mailTo: 'mailto:',
+      tel: 'tel:',
+    };
+  },
+  computed: mapState([
+    'hours',
+    'contact',
+  ]),
+  created() {
+    this.$store.dispatch('loadHours');
+    this.$store.dispatch('loadContact');
+  },
+};
+</script>
 
 <style>
 .hours-contact {
@@ -33,15 +54,19 @@
 #contact-id {
   padding-top: 2em;
 }
-.contact {
-  padding-top: 1em;
-}
 .hours {
   padding-top: 1em;
   font-size: 2.5vh;
 }
 .phone {
   font-size: 3vh;
+  text-decoration: none;
+}
+.email {
+  text-decoration: none;
+}
+.contact {
+  padding-top: 1.5em;
 }
 
 .hours-header {
@@ -49,5 +74,13 @@
 }
 .tacocat {
   width: 20pt;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
 }
 </style>

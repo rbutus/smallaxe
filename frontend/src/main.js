@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import {
+  NavbarPlugin,
+  LayoutPlugin,
+  BadgePlugin,
+} from 'bootstrap-vue';
 import App from './App.vue';
 import store from './store';
 import router from './router/index';
@@ -8,8 +12,9 @@ import './assets/custom.scss';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
+Vue.use(NavbarPlugin);
+Vue.use(LayoutPlugin);
+Vue.use(BadgePlugin);
 
 new Vue({
   store,

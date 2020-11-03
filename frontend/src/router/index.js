@@ -1,39 +1,37 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import Covid from '../views/Covid.vue';
-import Gallery from '../views/Gallery.vue';
-import Menu from '../views/Menu.vue';
+import Router from 'vue-router';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/covid',
-    name: 'Covid',
-    component: Covid,
-  },
-  {
-    path: '/gallery',
-    name: 'Gallery',
-    component: Gallery,
-  },
-  {
-    path: '/menu',
-    name: 'Menu',
-    component: Menu,
-  },
-];
+function lazyLoad(view) {
+  const path = '../views/Home.vue';
+  console.log(path);
+  return () => import(`../views/${view}.vue`);
+}
 
-const router = new VueRouter({
+export default new Router({
   mode: 'history',
-  // base: process.env.BASE_URL,
-  routes,
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: lazyLoad('Home'),
+    },
+    {
+      path: '/covid',
+      name: 'Covid',
+      component: lazyLoad('Covid'),
+    },
+    {
+      path: '/gallery',
+      name: 'Gallery',
+      component: lazyLoad('Gallery'),
+    },
+    {
+      path: '/menu',
+      name: 'Menu',
+      component: lazyLoad('Menu'),
+    },
+  ],
 });
-
-export default router;

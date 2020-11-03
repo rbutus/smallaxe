@@ -24,3 +24,6 @@ html, body {
 html {
   -webkit-text-size-adjust: 100%;
 }
+li {
+  list-style-type: none;
+}

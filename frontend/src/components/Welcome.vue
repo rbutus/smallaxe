@@ -74,6 +74,5 @@ export default {
 }
 .about-container {
   position: relative;
-
 }
 </style>
