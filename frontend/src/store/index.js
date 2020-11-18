@@ -23,6 +23,7 @@ export default new Vuex.Store({
     happyHour: [],
     hours: [],
     contact: [],
+    menu: [],
   },
   getters: {
     quotes: (state) => state.loadQuotes,
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     happyHour: (state) => state.happyHour,
     hours: (state) => state.hours,
     contact: (state) => state.contact,
+    menu: (state) => state.buildMenu,
   },
   mutations: {
     SET_QUOTES(state, quotes) {
@@ -90,6 +92,9 @@ export default new Vuex.Store({
     },
     SET_CONTACT(state, contact) {
       state.contact = contact;
+    },
+    SET_MENU(state, menu) {
+      state.menu = menu;
     },
   },
   actions: {
@@ -197,6 +202,16 @@ export default new Vuex.Store({
         .then((contact) => {
           commit('SET_CONTACT', contact);
         });
+    },
+    async buildMenu({ commit }) {
+      const menu = [];
+      menu.push(await axios.get('happy-hours').then((res) => res.data));
+      menu.push(await axios.get('menu-drinks').then((res) => res.data));
+      commit('SET_MENU', menu);
+    //   menu.push(menuDrinks.data);
+    //   const happyHours = axios.get('happy-hours');
+    //   menu.push(happyHours.data);
+    //   commit('SET_MENU', menu);
     },
   },
 });

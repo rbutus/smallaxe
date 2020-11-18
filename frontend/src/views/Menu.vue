@@ -4,12 +4,14 @@
     <div class="menu">
       <div class="box" v-b-toggle.collapse-happy-hour>
         <div class="header-bg">
+        <div v-for="(me, i) in menu" v-bind:key="'menu_' + i">
+            <div>Hello</div>
           <div class="header">Happy Hour!</div>
           <div class="menu-times">2pm - 5pm daily!</div>
           <div class="plus">+</div>
-        </div>
+                <div>{{ m.name }}</div>
         <b-collapse id="collapse-happy-hour">
-          <li v-for="(item, i) in happyHour" v-bind:key="'happyHour_' + i">
+            <li v-for="(m, i) in me" v-bind:key="'me_' + i">
             <div class="menu-info">
               <div class="item">{{ item.name }}</div>
               <div class="price">{{ item.price}}</div>
@@ -17,73 +19,10 @@
             </div>
           </li>
         </b-collapse>
-      </div>
-      <div class="box" v-b-toggle.collapse-weekday>
-        <div class="header-bg">
-          <div class="header">Weekday Breakfast Menu</div>
-          <div class="menu-times">8am - 11am </div>
-          <div class="plus">+</div>
         </div>
-        <b-collapse id="collapse-weekday">
-          <li v-for="(item, i) in menuWeekdayBreakfast" v-bind:key="'weekdaymenu_' + i">
-            <div class="menu-info">
-              <div class="item">{{ item.name }}</div>
-              <div class="price">{{ item.price}}</div>
-              <div class="description">{{ item.description }}</div>
-            </div>
-          </li>
-        </b-collapse>
-      </div>
-      <div class="box" v-b-toggle.collapse-weekend>
-        <div class="header-bg">
-          <div class="header">Weekend Breakfast Menu</div>
-          <div class="menu-times">8am - 2pm Sat, Sun</div>
-          <div class="plus">+</div>
         </div>
-        <b-collapse id="collapse-weekend">
-          <li v-for="(item, i) in menuWeekendBreakfast" v-bind:key="'weekendmenu_' + i">
-            <div class="menu-info">
-              <div class="item">{{ item.name }}</div>
-              <div class="price">{{ item.price}}</div>
-              <div class="description">{{ item.description }}</div>
-            </div>
-          </li>
-        </b-collapse>
       </div>
-      <div class="box" v-b-toggle.collapse-main>
-        <div class="header-bg">
-          <div class="header">Main Menu</div>
-          <div class="menu-times">12pm - close weekdays</div>
-          <div class="menu-times">2pm - close weekends</div>
-          <div class="plus">+</div>
-        </div>
-        <b-collapse id="collapse-main">
-          <li v-for="(item, i) in menuMain" v-bind:key="'mainmenu_' + i">
-            <div class="menu-info">
-              <div class="item">{{ item.name }}</div>
-              <div class="price">{{ item.price}}</div>
-              <div class="description">{{ item.description }}</div>
-            </div>
-          </li>
-        </b-collapse>
-      </div>
-      <div class="box" v-b-toggle.collapse-drinks>
-        <div class="header-bg">
-          <div class="header">Drink Menu</div>
-          <div class="menu-times">10am - close</div>
-          <div class="plus">+</div>
-        </div>
-        <b-collapse id="collapse-drinks">
-          <li v-for="(item, i) in menuDrinks" v-bind:key="'drinksmen_' + i">
-            <div class="menu-info">
-              <div class="item">{{ item.name }}</div>
-              <div class="price">{{ item.price}}</div>
-              <div class="description">{{ item.description }}</div>
-            </div>
-          </li>
-        </b-collapse>
-      </div>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -94,17 +33,19 @@ export default {
   name: 'post-request',
   data() {
     return {
+      debug: 'HEY',
       menuAM: null,
       menuPM: null,
     };
   },
-  computed: mapState([
-    'menuWeekendBreakfast',
-    'menuWeekdayBreakfast',
-    'menuMain',
-    'menuDrinks',
-    'happyHour',
-  ]),
+  computed: mapState({
+    menuWeekendBreakfast: 'menuWeekendBreakfast',
+    menuWeekdayBreakfast: 'menuWeekdayBreakfast',
+    menuMain: 'menuMain',
+    menuDrinks: 'menuDrinks',
+    happyHour: 'happyHour',
+    menu: 'menu',
+  }),
 
   created() {
     this.$store.dispatch('loadMenuWeekdayBreakfast');
@@ -112,6 +53,7 @@ export default {
     this.$store.dispatch('loadMenuMain');
     this.$store.dispatch('loadMenuDrinks');
     this.$store.dispatch('loadHappyHour');
+    this.$store.dispatch('buildMenu');
   },
   components: {
   },
