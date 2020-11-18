@@ -147,12 +147,21 @@ export default new Vuex.Store({
           commit('SET_MENU_WEEKDAY_BREAKFAST', menuWeekdayBreakfast);
         });
     },
-    loadMenuMain({ commit }) {
-      axios.get('menu-main-items')
-        .then((res) => res.data)
-        .then((menuMain) => {
-          commit('SET_MENU_MAIN', menuMain);
-        });
+    async loadMenuMain({ commit }) {
+      const title = await axios.get('menu-main-title').then((res) => res.data);
+      const menu = await axios.get('menu-main-items').then((res) => res.data);
+      const menuMain = {
+          title: title.name,
+          hours: title.hours,
+          menu,
+      };
+      commit('SET_MENU_MAIN', menuMain);
+
+    //   axios.get('menu-main-items')
+    //     .then((res) => res.data)
+    //     .then((menuMain) => {
+    //       commit('SET_MENU_MAIN', menuMain);
+    //     });
     },
     loadMenuDrinks({ commit }) {
       axios.get('menu-drinks')

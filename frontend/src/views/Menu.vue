@@ -2,24 +2,22 @@
   <div>
     <div class="fill-black"></div>
     <div class="menu">
-      <div class="box" v-b-toggle.collapse-happy-hour>
-        <div class="header-bg">
-        <div v-for="(me, i) in menu" v-bind:key="'menu_' + i">
-            <div>Hello</div>
-          <div class="header">Happy Hour!</div>
-          <div class="menu-times">2pm - 5pm daily!</div>
-          <div class="plus">+</div>
-                <div>{{ m.name }}</div>
-        <b-collapse id="collapse-happy-hour">
-            <li v-for="(m, i) in me" v-bind:key="'me_' + i">
-            <div class="menu-info">
-              <div class="item">{{ item.name }}</div>
-              <div class="price">{{ item.price}}</div>
-              <div class="description" v-html="item.description"></div>
+      <div v-for="(n, i) in 10" v-bind:key="'range_' + i">
+        <div class="box" v-b-toggle="'collapse-' + n">
+            <div class="header-bg">
+            <div class="header">{{ menuCat(n).title }}</div>
+            <div class="menu-times">{{ menuCat(n).hours }}</div>
+            <div class="plus">+</div>
             </div>
-          </li>
-        </b-collapse>
-        </div>
+            <b-collapse :id="'collapse-' + n">
+              <li v-for="(item, i) in menuCat(n).menu" v-bind:key="'me_' + i">
+                <div class="menu-info">
+                  <div class="item">{{ item.name }}</div>
+                  <div class="price">{{ item.price}}</div>
+                  <div class="description" v-html="item.description"></div>
+                </div>
+              </li>
+            </b-collapse>
         </div>
       </div>
     </div>
@@ -55,7 +53,13 @@ export default {
     this.$store.dispatch('loadHappyHour');
     this.$store.dispatch('buildMenu');
   },
-  components: {
+  methods: {
+    menuCat(id) {
+      if (id === 0) return this.menuWeekendBreakfast;
+      if (id === 1) return this.menuWeekdayBreakfast;
+      if (id > 1) return this.menuMain;
+      return null;
+    },
   },
 };
 </script>
