@@ -85,13 +85,11 @@ li {
 }
 
 .fill-black {
-  /* background-color:rgba(0,0,0,.9); */
-  background-image: url('../assets/img/tacocat_00dbdb_transparent.png');
-  background-size: 10pt;
-  height: 100%;
-  /* width: 100%; */
-  /* position: fixed; */
-  z-index: 1;
+  background-color:rgba(0,0,0,.9);
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 0;
 }
 .header-bg {
   background-color: black;
