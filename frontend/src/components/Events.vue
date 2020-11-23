@@ -2,12 +2,12 @@
   <div class="events" id="events-id">
     <div class="headers">Events</div>
     <li v-for="(event, i) in events" v-bind:key="'event_' + i">
-        <div class="date-title">{{ event.date }} - {{ event.title }}</div>
-        <div class="event-description">{{ event.description }}</div>
-        <div>
-        <img class="event-poster" alt="event poster"
-        :src="path + event.poster.formats.medium.url">
-        </div>
+      <div class="date-title">{{ event.date }} - {{ event.title }}</div>
+      <div class="event-description">{{ event.description }}</div>
+      <div>
+      <!-- <img class="event-poster" alt="event poster"
+      :src="path + event.poster.url"> -->
+      </div>
     </li>
   </div>
 </template>
@@ -20,7 +20,7 @@ import moment from 'moment';
 const baseURL = process.env.VUE_APP_API_ENDPOINT;
 
 export default {
-  name: 'post-request',
+  name: 'events-request',
   data() {
     return {
       path: baseURL,

@@ -4,13 +4,13 @@
     <b-container>
       <b-row>
         <b-col>
-          <img class="tacocat-color" src="../assets/img/tacocat_bw_transparent.png"/>
-        </b-col>
-        <b-col>
           <img class="tacocat-color" src="../assets/img/tacocat_color_trans.png"/>
         </b-col>
         <b-col>
-          <img class="tacocat-color" src="../assets/img/tacocat_bw_transparent.png"/>
+          <img class="logo-home" src="../assets/img/logo_bw.png"/>
+        </b-col>
+        <b-col>
+          <img class="tacocat-color" src="../assets/img/tacocat_color_trans.png"/>
         </b-col>
       </b-row>
     </b-container>
@@ -74,5 +74,8 @@ export default {
 }
 .about-container {
   position: relative;
+}
+.logo-home {
+    width: 100%;
 }
 </style>

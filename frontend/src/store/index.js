@@ -121,14 +121,23 @@ export default new Vuex.Store({
       Object.values(menus).forEach(async (menu) => {
         const title = await axios.get(menu[0]).then((res) => res.data);
         const menuItems = await axios.get(menu[1]).then((res) => res.data);
-        const menuMain = {
-            title: title.name,
-            hours: title.hours,
-            menuItems,
-        };
-        allMenus.push(menuMain);
+        if (title.enabled === true) {
+          const menuMain = {
+              title: title.name,
+              hours: title.hours,
+              menuItems,
+          };
+          allMenus.push(menuMain);
+        }
       });
       commit('SET_MENUS', allMenus);
+    },
+    loadAbout({ commit }) {
+        axios.get('about')
+        .then((res) => res.data)
+        .then((about) => {
+            commit('SET_ABOUT', about);
+        });
     },
     loadEvents({ commit }) {
       axios.get('events')
@@ -137,22 +146,15 @@ export default new Vuex.Store({
           commit('SET_EVENTS', events);
         });
     },
-    loadAbout({ commit }) {
-      axios.get('about')
-        .then((res) => res.data)
-        .then((about) => {
-          commit('SET_ABOUT', about);
-        });
-    },
     loadFacts({ commit }) {
-      axios.get('facts')
+        axios.get('facts')
         .then((res) => res.data)
         .then((facts) => {
-          commit('SET_FACTS', facts);
+            commit('SET_FACTS', facts);
         });
     },
     loadHours({ commit }) {
-      axios.get('hours')
+        axios.get('hours')
         .then((res) => res.data)
         .then((hours) => {
           commit('SET_HOURS', hours);
