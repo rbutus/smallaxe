@@ -13,34 +13,24 @@ export default new Vuex.Store({
     covidComments: [],
     covidLinks: [],
     photos: [],
-    menuWeekdayBreakfast: [],
-    menuWeekendBreakfast: [],
-    menuMain: [],
-    menuDrinks: [],
     events: [],
     about: [],
     facts: [],
-    happyHour: [],
     hours: [],
     contact: [],
-    menu: [],
+    menus: [],
   },
   getters: {
     quotes: (state) => state.loadQuotes,
     menuImage: (state) => state.loadMenuImage,
     covid: (state) => state.loadCovid,
     photos: (state) => state.loadPhotos,
-    menuWeekendBreakfast: (state) => state.loadMenuWeekendBreakfast,
-    menuWeekdayBreakfast: (state) => state.loadMenuWeekdayBreakfast,
-    menuMain: (state) => state.loadMenuMain,
-    menuDrinks: (state) => state.loadMenuDrinks,
     events: (state) => state.loadEvents,
     about: (state) => state.about,
     facts: (state) => state.facts,
-    happyHour: (state) => state.happyHour,
     hours: (state) => state.hours,
     contact: (state) => state.contact,
-    menu: (state) => state.buildMenu,
+    menus: (state) => state.loadMenus,
   },
   mutations: {
     SET_QUOTES(state, quotes) {
@@ -63,18 +53,6 @@ export default new Vuex.Store({
       state.photos = a;
       console.log(a);
     },
-    SET_MENU_WEEKEND_BREAKFAST(state, menuWeekendBreakfast) {
-      state.menuWeekendBreakfast = menuWeekendBreakfast;
-    },
-    SET_MENU_WEEKDAY_BREAKFAST(state, menuWeekdayBreakfast) {
-      state.menuWeekdayBreakfast = menuWeekdayBreakfast;
-    },
-    SET_MENU_MAIN(state, menuMain) {
-      state.menuMain = menuMain;
-    },
-    SET_MENU_DRINKS(state, menuDrinks) {
-      state.menuDrinks = menuDrinks;
-    },
     SET_EVENTS(state, events) {
       state.events = events;
     },
@@ -84,17 +62,14 @@ export default new Vuex.Store({
     SET_FACTS(state, facts) {
       state.facts = facts;
     },
-    SET_HAPPY_HOUR(state, happyHour) {
-      state.happyHour = happyHour;
-    },
     SET_HOURS(state, hours) {
       state.hours = hours;
     },
     SET_CONTACT(state, contact) {
       state.contact = contact;
     },
-    SET_MENU(state, menu) {
-      state.menu = menu;
+    SET_MENUS(state, menus) {
+      state.menus = menus;
     },
   },
   actions: {
@@ -133,42 +108,27 @@ export default new Vuex.Store({
           commit('SET_PHOTOS', photos);
         });
     },
-    loadMenuWeekendBreakfast({ commit }) {
-      axios.get('menu-weekend-breakfast-items')
-        .then((res) => res.data)
-        .then((menuWeekendBreakfast) => {
-          commit('SET_MENU_WEEKEND_BREAKFAST', menuWeekendBreakfast);
-        });
-    },
-    loadMenuWeekdayBreakfast({ commit }) {
-      axios.get('menu-weekday-breakfast-items')
-        .then((res) => res.data)
-        .then((menuWeekdayBreakfast) => {
-          commit('SET_MENU_WEEKDAY_BREAKFAST', menuWeekdayBreakfast);
-        });
-    },
-    async loadMenuMain({ commit }) {
-      const title = await axios.get('menu-main-title').then((res) => res.data);
-      const menu = await axios.get('menu-main-items').then((res) => res.data);
-      const menuMain = {
-          title: title.name,
-          hours: title.hours,
-          menu,
-      };
-      commit('SET_MENU_MAIN', menuMain);
-
-    //   axios.get('menu-main-items')
-    //     .then((res) => res.data)
-    //     .then((menuMain) => {
-    //       commit('SET_MENU_MAIN', menuMain);
-    //     });
-    },
-    loadMenuDrinks({ commit }) {
-      axios.get('menu-drinks')
-        .then((res) => res.data)
-        .then((menuDrinks) => {
-          commit('SET_MENU_DRINKS', menuDrinks);
-        });
+    loadMenus({ commit }) {
+      const menus = [
+          ['menu-main-title', 'menu-main-items'],
+          ['menu-weekend-breakfast-title', 'menu-weekend-breakfast-items'],
+          ['menu-weekday-breakfast-title', 'menu-weekday-breakfast-items'],
+          ['menu-drinks-title', 'menu-drinks'],
+          ['menu-happy-hour-title', 'happy-hours'],
+          ['menu-drink-specials-title', 'menu-drink-specials-items'],
+      ];
+      const allMenus = [];
+      Object.values(menus).forEach(async (menu) => {
+        const title = await axios.get(menu[0]).then((res) => res.data);
+        const menuItems = await axios.get(menu[1]).then((res) => res.data);
+        const menuMain = {
+            title: title.name,
+            hours: title.hours,
+            menuItems,
+        };
+        allMenus.push(menuMain);
+      });
+      commit('SET_MENUS', allMenus);
     },
     loadEvents({ commit }) {
       axios.get('events')
@@ -191,13 +151,6 @@ export default new Vuex.Store({
           commit('SET_FACTS', facts);
         });
     },
-    loadHappyHour({ commit }) {
-      axios.get('happy-hours')
-        .then((res) => res.data)
-        .then((happyHour) => {
-          commit('SET_HAPPY_HOUR', happyHour);
-        });
-    },
     loadHours({ commit }) {
       axios.get('hours')
         .then((res) => res.data)
@@ -211,16 +164,6 @@ export default new Vuex.Store({
         .then((contact) => {
           commit('SET_CONTACT', contact);
         });
-    },
-    async buildMenu({ commit }) {
-      const menu = [];
-      menu.push(await axios.get('happy-hours').then((res) => res.data));
-      menu.push(await axios.get('menu-drinks').then((res) => res.data));
-      commit('SET_MENU', menu);
-    //   menu.push(menuDrinks.data);
-    //   const happyHours = axios.get('happy-hours');
-    //   menu.push(happyHours.data);
-    //   commit('SET_MENU', menu);
     },
   },
 });

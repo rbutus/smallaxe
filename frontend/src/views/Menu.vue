@@ -2,18 +2,18 @@
   <div>
     <div class="fill-black"></div>
     <div class="menu">
-      <div v-for="(n, i) in 10" v-bind:key="'range_' + i">
-        <div class="box" v-b-toggle="'collapse-' + n">
+      <div v-for="(menu, i) in menus" v-bind:key="'range_' + i">
+        <div class="box" v-b-toggle="'collapse-' + i">
             <div class="header-bg">
-            <div class="header">{{ menuCat(n).title }}</div>
-            <div class="menu-times">{{ menuCat(n).hours }}</div>
-            <div class="plus">+</div>
+              <div class="header" v-html="menu.title"></div>
+              <div class="menu-times" v-html="menu.hours"></div>
+              <div class="plus">+</div>
             </div>
-            <b-collapse :id="'collapse-' + n">
-              <li v-for="(item, i) in menuCat(n).menu" v-bind:key="'me_' + i">
+            <b-collapse :id="'collapse-' + i">
+              <li v-for="(item, i) in menu.menuItems" v-bind:key="'me_' + i">
                 <div class="menu-info">
-                  <div class="item">{{ item.name }}</div>
-                  <div class="price">{{ item.price}}</div>
+                  <div class="item" v-html="item.name"></div>
+                  <div class="price" v-html="item.price"></div>
                   <div class="description" v-html="item.description"></div>
                 </div>
               </li>
@@ -28,38 +28,13 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'post-request',
-  data() {
-    return {
-      debug: 'HEY',
-      menuAM: null,
-      menuPM: null,
-    };
-  },
+  name: 'menu-request',
   computed: mapState({
-    menuWeekendBreakfast: 'menuWeekendBreakfast',
-    menuWeekdayBreakfast: 'menuWeekdayBreakfast',
-    menuMain: 'menuMain',
-    menuDrinks: 'menuDrinks',
-    happyHour: 'happyHour',
-    menu: 'menu',
+    menus: 'menus',
   }),
 
   created() {
-    this.$store.dispatch('loadMenuWeekdayBreakfast');
-    this.$store.dispatch('loadMenuWeekendBreakfast');
-    this.$store.dispatch('loadMenuMain');
-    this.$store.dispatch('loadMenuDrinks');
-    this.$store.dispatch('loadHappyHour');
-    this.$store.dispatch('buildMenu');
-  },
-  methods: {
-    menuCat(id) {
-      if (id === 0) return this.menuWeekendBreakfast;
-      if (id === 1) return this.menuWeekdayBreakfast;
-      if (id > 1) return this.menuMain;
-      return null;
-    },
+    this.$store.dispatch('loadMenus');
   },
 };
 </script>
@@ -110,11 +85,13 @@ li {
 }
 
 .fill-black {
-  background-color:rgba(0,0,0,.9);
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  z-index: 0;
+  /* background-color:rgba(0,0,0,.9); */
+  background-image: url('../assets/img/tacocat_00dbdb_transparent.png');
+  background-size: 10pt;
+  height: 100%;
+  /* width: 100%; */
+  /* position: fixed; */
+  z-index: 1;
 }
 .header-bg {
   background-color: black;
