@@ -31,17 +31,13 @@
   font-size: 20pt;
 }
 
-#nav1 {
-  opacity: 0.9;
-}
-
 .dropsize {
   font-size: 16pt;
 
 }
 
-.dropdown-item > a {
+/* .dropdown-item > a {
   padding: 0;
-}
+} */
 
 </style>

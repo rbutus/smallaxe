@@ -43,7 +43,7 @@ export default {
 .box {
   border: 0.1px solid #343434;
   width: 100%;
-
+  padding-bottom: 1pt;
 }
 .header {
   font-size: 3.5vh;
@@ -62,18 +62,19 @@ export default {
 }
 .item {
   font-size: 3vh;
-  color: #00dbdb;
+  color: black;
+  padding-top: 1em;
 }
 .price {
-  color: whitesmoke;
+  color:darkslateblue;
   font-size: 2vh;
 }
 .description {
-  color: grey;
+  color: #555555;
   padding-top: 4pt;
   font-size: 2.5vh;
 }
-li {
+.menu-items {
   padding-top: 10pt;
   list-style-type: none;
 }
@@ -81,11 +82,12 @@ li {
 .menu {
   position: relative;
   height: 100%;
-  padding-top: 60pt;
+  padding-top: 53pt;
 }
 
 .fill-black {
-  background-color:rgba(0,0,0,.9);
+  background-color:#00dbdb;
+  padding-top: 10pt;
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -94,7 +96,7 @@ li {
 .header-bg {
   background-color: black;
   position: sticky;
-  top: 60pt;
+  top: 53pt;
 }
 @media (max-width: 990px) {
   .header-bg{
