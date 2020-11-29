@@ -1,0 +1,31 @@
+
+
+$dark:            rgb(10,10,10);
+$purple-dark:  #2d242d;
+$purple-mid:    #8d558c;
+$purple-light:  #cba4cd;
+$pink: #dc3fb9;
+$secondary: black;
+
+$navbar-dark-hover-color: $pink;
+$navbar-dark-active-color: $purple-mid;
+
+
+$dropdown-bg:     $dark;
+$dropdown-link-color:      $purple-mid;
+$dropdown-link-hover-bg:   $purple-dark;
+$dropdown-link-hover-color: $purple-light;
+$dropdown-item-padding-y: 0.8rem;
+$dropdown-divider-margin: 0;
+$dropdown-font-size: 1rem;
+$dropdown-border-width: 0;
+
+$badge-pill-padding-y:  0.8em;
+$badge-pill-padding-x:  1em;
+
+$btn-line-height:  0.3em;
+$btn-padding-x: 0.3em;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
+

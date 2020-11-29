@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Special Elite';
+  src: url('./assets/fonts/SpecialElite-Regular.woff2') format('woff2'),
+      url('./assets/fonts/SpecialElite-Regular.woff') format('woff'),
+      url('./assets/fonts/SpecialElite-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.app-font {
+  font-family: 'Special Elite';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #a8a8a8;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+li {
+  list-style-type: none;
+}
