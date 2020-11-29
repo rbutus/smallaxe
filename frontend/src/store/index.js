@@ -110,21 +110,33 @@ export default new Vuex.Store({
     },
     loadMenus({ commit }) {
       const menus = [
-          ['menu-main-title', 'menu-main-items'],
-          ['menu-weekend-breakfast-title', 'menu-weekend-breakfast-items'],
-          ['menu-weekday-breakfast-title', 'menu-weekday-breakfast-items'],
-          ['menu-drinks-title', 'menu-drinks'],
-          ['menu-happy-hour-title', 'happy-hours'],
-          ['menu-drink-specials-title', 'menu-drink-specials-items'],
+          ['menu01-title', 'menu01'],
+          ['menu02-title', 'menu02'],
+          ['menu03-title', 'menu03'],
+          ['menu04-title', 'menu04'],
+          ['menu05-title', 'menu05'],
+          ['menu06-title', 'menu06'],
       ];
       const allMenus = [];
       Object.values(menus).forEach(async (menu) => {
+        let categories = [];
+
         const title = await axios.get(menu[0]).then((res) => res.data);
         const menuItems = await axios.get(menu[1]).then((res) => res.data);
+        menuItems.forEach(async (item, index) => {
+          if (!('menu_cat' in item)) {
+            menuItems[index].menu_cat = { 0: { name: 'none' } };
+            categories.push('none');
+          } else {
+            categories.push(menuItems[index].menu_cat[0].name);
+        }
+        });
+        categories = [...new Set(categories)];
         if (title.enabled === true) {
           const menuMain = {
               title: title.name,
               hours: title.hours,
+              categories,
               menuItems,
           };
           allMenus.push(menuMain);

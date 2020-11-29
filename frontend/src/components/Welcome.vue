@@ -6,7 +6,7 @@
         <b-col>
           <img class="tacocat-color" src="../assets/img/tacocat_color_trans.png"/>
         </b-col>
-        <b-col>
+        <b-col cols=5>
           <img class="logo-home" src="../assets/img/logo_bw.png"/>
         </b-col>
         <b-col>
@@ -14,6 +14,7 @@
         </b-col>
       </b-row>
     </b-container>
+    <a class="menu-link" href="menu">~ MENU ~</a>
     <div class="about-container">
     <div class="about" v-html="about.text"></div>
     </div>
@@ -77,5 +78,11 @@ export default {
 }
 .logo-home {
     width: 100%;
+    padding-bottom: 2em;
 }
+.menu-link {
+  font-size: 2em;
+  padding-top: 3em;
+}
+
 </style>
