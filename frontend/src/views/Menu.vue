@@ -56,15 +56,15 @@ export default {
   padding-bottom: 1pt;
 }
 .header {
-  font-size: 1.8em;
+  font-size: 1.5em;
   padding-top: 0.3em;
   color:#dc3fb9;
 }
 .menu-times {
-  font-size: 1.3em;
+  font-size: 1em;
 }
 .plus {
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 .menu-info {
   max-width: 90%;
@@ -76,7 +76,7 @@ export default {
 
 }
 .item {
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: black;
   padding-top: 0em;;
 }
@@ -113,7 +113,7 @@ export default {
 .categories {
   background-color:cornflowerblue;
   color: black;
-  font-size: 1.8em;
+  font-size: 1.5em;
   padding: 0.2em;
   /* z-index: 0; */
 }
@@ -124,11 +124,11 @@ export default {
   z-index: 1;
 }
 .header-bg {
-  background-color: black;
+  background-color: #1c122c;
   position: sticky;
   top: 53pt;
   z-index: 2;
-  height: 10em;
+  height: 7.5em;
 }
 .front {
   z-index: 5;
