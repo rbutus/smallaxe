@@ -44,13 +44,13 @@ export default {
 
 .events {
   color: rgb(10,10,10);
-  background-color: #b84697;
+  background-color: cornflowerblue;
   opacity: 0.9;
   padding-top: 2em;
   height: 100%;
   padding-bottom: 2em;
   font-size: 3vh;
-  border: 5px solid #f63dc5;
+  /* border: 5px solid #f63dc5; */
 }
 
 .date-title {
