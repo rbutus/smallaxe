@@ -9,9 +9,7 @@
       <div>Please click on the following links for more information:</div>
       <br/>
       <li v-for="(cov, i) in covidLinks" v-bind:key="'covidlinks_' + i">
-        <a :href="cov.link">
-          {{ cov.organization }}
-        </a>
+        <a :href="cov.link" v-html="cov.organization"></a>
       </li>
     </div>
 </div>
